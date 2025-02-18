@@ -1,0 +1,6 @@
+﻿Designator,Footprint,Quantity,Value,LCSC Part #
+"BZ1, BZ2",Buzzer_12x9.5RM7.6,2,Buzzer,
+"RV1, RV2",Potentiometer_Alps_RK09K_Single_Vertical,2,R_Potentiometer,
+"SW1, SW2",SW_PUSH-12mm,2,SW_Push,
+SW3,RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm,1,RotaryEncoder_Switch,
+U1,MODULE_RP2040-ZERO,1,RP2040-ZERO,
