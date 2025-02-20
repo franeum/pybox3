@@ -3,4 +3,4 @@
 "RV1, RV2",Potentiometer_Alps_RK09K_Single_Vertical,2,R_Potentiometer,
 "SW1, SW2",SW_PUSH-12mm,2,SW_Push,
 SW3,RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm,1,RotaryEncoder_Switch,
-U1,MODULE_RP2040-ZERO,1,RP2040-ZERO,
+U1,MODULE_RP2040-ZERO_reduced,1,RP2040-ZERO,
