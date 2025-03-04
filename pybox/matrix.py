@@ -27,6 +27,7 @@ PIN_STRIP = board.GP16
 N_PIXELS = 25
 
 
+
 class A_MATRIX:
     NUMBER = N_PIXELS
 
@@ -241,7 +242,7 @@ class MATRIX:
         >>> matrix.write(1)
     """
 
-    def __init__(self, color: tuple[int] = RED, brightness: float = 0.25):
+    def __init__(self, color=RED, brightness=0.25):
         self.__matrix = A_MATRIX(color=color, brightness=brightness)
         self.strip = [PIXEL(x, matrix=self.__matrix) for x in range(N_PIXELS)]
 

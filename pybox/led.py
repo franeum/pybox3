@@ -1,6 +1,21 @@
-from pybox.matrix import MATRIX
-from pybox.color import *
+import board
+import neopixel
+from adafruit_pixel_framebuf import PixelFramebuffer
 
-def LED(color: tuple[int] = RED, brightness: float = 0.25):
-    matrix = MATRIX(color, brightness)
-    return matrix[12]
+PIXEL_PIN = board.NEOPIXEL
+WIDTH = 5
+HEIGHT = 5
+
+PIXELS = neopixel.NeoPixel(
+    PIXEL_PIN,
+    WIDTH * HEIGHT,
+    brightness=0.2,
+    auto_write=False,
+)
+
+pixel_framebuf = PixelFramebuffer(
+    PIXELS,
+    WIDTH,
+    HEIGHT,
+    alternating=False
+)
