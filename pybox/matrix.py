@@ -27,16 +27,15 @@ PIN_STRIP = board.GP16
 N_PIXELS = 25
 
 
-
 class A_MATRIX:
     NUMBER = N_PIXELS
 
-    def __init__(self, ctrl_pin=PIN_STRIP, color: tuple[int] = RED, brightness: float = 0.25):
+    def __init__(
+        self, ctrl_pin=PIN_STRIP, color: tuple[int] = RED, brightness: float = 0.25
+    ):
         self._np = NeoPixel(
-            ctrl_pin,
-            A_MATRIX.NUMBER,
-            brightness=brightness,
-            auto_write=True)
+            ctrl_pin, A_MATRIX.NUMBER, brightness=brightness, auto_write=True
+        )
 
         self._col = [color] * A_MATRIX.NUMBER
         self._global_col = color
@@ -106,7 +105,8 @@ class A_MATRIX:
                     self._col[i] = col
             except TypeError as exc:
                 raise TypeError(
-                    "Please, provide an int, a tuple, a list or a range as first arg") from exc
+                    "Please, provide an int, a tuple, a list or a range as first arg"
+                ) from exc
 
     def get_pixel_color(self, index: int = None) -> tuple[int]:
         return self._col[index]
@@ -127,7 +127,8 @@ class A_MATRIX:
                 return None
             except TypeError as exc:
                 raise TypeError(
-                    "Please, provide an int, a tuple, a list or a range as first arg") from exc
+                    "Please, provide an int, a tuple, a list or a range as first arg"
+                ) from exc
 
     def __parse_color(self, index, col=None) -> tuple[int]:
         if col is not None:
@@ -147,22 +148,24 @@ class A_MATRIX:
 class PIXEL:
     """Pixel class.
 
-        A PIXEL object is an abstraction to manage a single rgb led, part of a MATRIX object. 
+    A PIXEL object is an abstraction to manage a single rgb led, part of a MATRIX object.
 
-        Args:
-            index (int): index of the pixel in the matrix class list. Defaults to None.
-            color (tuple[int], optional): color of the Pixel. Defaults to RED.
-            matrix (A_MATRIX, optional): Matrix reference. Defaults to None.
+    Args:
+        index (int): index of the pixel in the matrix class list. Defaults to None.
+        color (tuple[int], optional): color of the Pixel. Defaults to RED.
+        matrix (A_MATRIX, optional): Matrix reference. Defaults to None.
 
-        You don't create a PIXEL instance directly, but when you create a MATRIX object, it creates a list of PIXEL objects.
+    You don't create a PIXEL instance directly, but when you create a MATRIX object, it creates a list of PIXEL objects.
 
-        Examples:
-            >>> matrix = MATRIX()
-            >>> type(matrix[0])
-            <class 'PIXEL'>
+    Examples:
+        >>> matrix = MATRIX()
+        >>> type(matrix[0])
+        <class 'PIXEL'>
     """
 
-    def __init__(self, index: int = None, color: tuple[int] = RED, matrix: A_MATRIX = None):
+    def __init__(
+        self, index: int = None, color: tuple[int] = RED, matrix: A_MATRIX = None
+    ):
         self.index = index
         self.__matrix = matrix
         self.__matrix.set_pixel_color(index, color)
@@ -187,8 +190,7 @@ class PIXEL:
         self.__matrix.set_pixel(self.index, 0)
 
     def toggle(self):
-        """Turn on a pixel if the pixel is currently turned off and viceversa.
-        """
+        """Turn on a pixel if the pixel is currently turned off and viceversa."""
         if self.__matrix.is_on(self.index):
             self.off()
         else:
@@ -220,8 +222,7 @@ class PIXEL:
         self.__matrix.set_pixel_color(self.index, color)
 
     def deinit(self) -> None:
-        """Blank out the matrix and release the pin for other use. 
-        """
+        """Blank out the matrix and release the pin for other use."""
         self.__matrix.deinit()
 
 
@@ -280,8 +281,7 @@ class MATRIX:
         self.__matrix.off()
 
     def toggle(self):
-        """Turn on the matrix globally if the first Pixel is currently turned off and viceversa.
-        """
+        """Turn on the matrix globally if the first Pixel is currently turned off and viceversa."""
         self.__matrix.toggle()
 
     def write(self, col: tuple = None) -> None:
@@ -297,8 +297,7 @@ class MATRIX:
         self.__matrix.write(col)
 
     def deinit(self) -> None:
-        """Blank out the matrix and release the pin for other use. 
-        """
+        """Blank out the matrix and release the pin for other use."""
         self.__matrix.deinit()
 
     @property
