@@ -1,317 +1,157 @@
-"""
-*This module help you to manage the pybox rgb led matrix.*
-
----
-
-Examples:
-    >>> from pybox.matrix import MATRIX
-    >>> from pybox.color import *
-    >>> matrix = MATRIX()
-    >>> matrix.write(1)   # turn on whole matrix (in RED)
-    >>> matrix.write(0)   # turn off it
-    
-The user basically creates an instance of `MATRIX` class. 
-This object will creates a list of PIXEL objects, where a pixel si a representation of a rgb led in the matrix.
-
-Examples:
-    >>> # turn on/off the first pixel of the matrix only
-    >>> matrix[0].on()
-    >>> matrix[0].off()
-"""
-
+from adafruit_pixel_framebuf import PixelFramebuffer
 from neopixel import NeoPixel
-import board
 from pybox.color import RED, OFF
+import board
 
-PIN_STRIP = board.GP16
-N_PIXELS = 25
+PIXEL_PIN = board.NEOPIXEL
+WIDTH = 5
+HEIGHT = 5
 
 
-class A_MATRIX:
-    NUMBER = N_PIXELS
+def colortuple2colorint(color):
+    r, g, b = color
+    return (r << 16) + (g << 8) + b
 
-    def __init__(
-        self, ctrl_pin=PIN_STRIP, color: tuple[int] = RED, brightness: float = 0.25
-    ):
-        self._np = NeoPixel(
-            ctrl_pin, A_MATRIX.NUMBER, brightness=brightness, auto_write=True
-        )
 
-        self._col = [color] * A_MATRIX.NUMBER
-        self._global_col = color
+def check_color_format(color):
+    if isinstance(color, tuple):
+        return colortuple2colorint(color)
+    else:
+        return color
 
-    def __set_single_led(self, index, color):
-        self._np[index] = self.__parse_color(index, color)
 
-    def write(self, col: tuple = None) -> None:
-        if col is not None:
-            if isinstance(col, tuple):
-                if col != OFF:
-                    self._global_col = col
-                _col = col
-            elif col == 0:
-                _col = OFF
-            else:
-                _col = self._global_col
-        else:
-            _col = self._global_col
-
-        self._np.fill(_col)
-
-    def on(self) -> None:
-        self.write(1)
-
-    def off(self) -> None:
-        self.write(0)
-
-    def toggle(self) -> None:
-        if self._np[0] == OFF:
-            self.write(1)
-        else:
-            self.write(0)
-
-    @property
-    def color(self) -> tuple[int]:
-        return self._global_col
-
-    @color.setter
-    def color(self, col: tuple[int] = RED) -> None:
-        self._global_col = col
-
-    @property
-    def brightness(self) -> float:
-        return self._np.brightness
-
-    @brightness.setter
-    def brightness(self, value: float = None) -> None:
-        self._np.brightness = value
-
-    def __setitem__(self, index: int, item: tuple[int]) -> None:
-        self._np[index] = self.__parse_color(index, item)
-
-    def __getitem__(self, index: int) -> tuple[int]:
-        return self._np[index]
-
-    def set_pixel_color(self, index: int = None, col: tuple = None) -> None:
-        self._col[index] = col
-
-        if isinstance(index, int):
-            self._col[index] = col
-        else:
-            try:
-                if isinstance(index, range):
-                    index = list(index)
-                for i in index:
-                    self._col[i] = col
-            except TypeError as exc:
-                raise TypeError(
-                    "Please, provide an int, a tuple, a list or a range as first arg"
-                ) from exc
-
-    def get_pixel_color(self, index: int = None) -> tuple[int]:
-        return self._col[index]
-
-    def is_on(self, index: int = None) -> bool:
-        return self._np[index] != OFF
-
-    def set_pixel(self, index: int = None, col: tuple[int] = None):
-        if isinstance(index, int):
-            self.__set_single_led(index, col)
-            return None
-        else:
-            try:
-                if isinstance(index, range):
-                    index = list(index)
-                for i in index:
-                    self.__set_single_led(i, col)
-                return None
-            except TypeError as exc:
-                raise TypeError(
-                    "Please, provide an int, a tuple, a list or a range as first arg"
-                ) from exc
-
-    def __parse_color(self, index, col=None) -> tuple[int]:
-        if col is not None:
-            if isinstance(col, tuple):
-                if col != OFF:
-                    self._col[index] = col
-                return col
-            elif col == 0:
-                return OFF
-
-        return self._col[index]
-
-    def deinit(self):
-        self._np.deinit()
+def index2xy(index, n_rows, n_cols):
+    return index % n_rows, index // n_cols
 
 
 class PIXEL:
-    """Pixel class.
-
-    A PIXEL object is an abstraction to manage a single rgb led, part of a MATRIX object.
-
-    Args:
-        index (int): index of the pixel in the matrix class list. Defaults to None.
-        color (tuple[int], optional): color of the Pixel. Defaults to RED.
-        matrix (A_MATRIX, optional): Matrix reference. Defaults to None.
-
-    You don't create a PIXEL instance directly, but when you create a MATRIX object, it creates a list of PIXEL objects.
-
-    Examples:
-        >>> matrix = MATRIX()
-        >>> type(matrix[0])
-        <class 'PIXEL'>
-    """
-
-    def __init__(
-        self, index: int = None, color: tuple[int] = RED, matrix: A_MATRIX = None
-    ):
+    def __init__(self, index):
         self.index = index
-        self.__matrix = matrix
-        self.__matrix.set_pixel_color(index, color)
-
-    def __repr__(self) -> str:
-        return f"PIXEL object with index {self.index} and color {self.__matrix.get_pixel_color(self.index)}"
-
-    def on(self):
-        """Turn on a pixel.
-
-        Examples:
-            >>> matrix[0].on()   # turn on the pixel at index 0 with current color
-        """
-        self.__matrix.set_pixel(self.index, 1)
-
-    def off(self):
-        """Turn off a pixel.
-
-        Examples:
-            >>> matrix[0].off()   # turn off the pixel at index 0 with current color
-        """
-        self.__matrix.set_pixel(self.index, 0)
-
-    def toggle(self):
-        """Turn on a pixel if the pixel is currently turned off and viceversa."""
-        if self.__matrix.is_on(self.index):
-            self.off()
-        else:
-            self.on()
-
-    def write(self, col: tuple = None) -> None:
-        """Write a value on a pixel.
-
-        Args:
-            col (tuple | int): if a `tuple` set `color` property and use it to turn on it, if a non-zero `int` turn on the pixel using `color`. If zero, turn off it with `pybox.color.OFF`
-
-        Examples:
-            >>> matrix.write(1)   # turn on all the matrix with current global color
-            >>> matrix.write(0)   # turn off all the matrix
-        """
-        self.__matrix.set_pixel(self.index, col)
-
-    @property
-    def color(self) -> tuple[int]:
-        """Get/Set color of a pixel.
-
-        Returns:
-            color: color of the pixel in `tuple[int]` format
-        """
-        return self.__matrix.get_pixel_color(self.index)
-
-    @color.setter
-    def color(self, color: tuple[int]):
-        self.__matrix.set_pixel_color(self.index, color)
-
-    def deinit(self) -> None:
-        """Blank out the matrix and release the pin for other use."""
-        self.__matrix.deinit()
 
 
 class MATRIX:
-    """Matrix class.
-
-    ---
-
-    Manage the matrix of 12 pixels on board of the pybox
-
-    Args:
-        color: color in (r, g, b) format, tipically a pybox.color identifier [ *Default*: pybox.color.RED ].
-        brightness: value between 0.0 and 1.0 [ *Default*: 0.25 ].
-
-    Examples:
-        >>> # turn on the matrix in green color
-        >>> matrix = MATRIX(color=GREEN)
-        >>> matrix.write(1)
-    """
-
     def __init__(self, color=RED, brightness=0.25):
-        self.__matrix = A_MATRIX(color=color, brightness=brightness)
-        self.strip = [PIXEL(x, matrix=self.__matrix) for x in range(N_PIXELS)]
+        self._pixels = NeoPixel(
+            PIXEL_PIN,
+            WIDTH * HEIGHT,
+            brightness=brightness,
+            auto_write=False
+        )
+        self.frame_buf = PixelFramebuffer(
+            self._pixels,
+            WIDTH,
+            HEIGHT,
+            alternating=False
+        )
 
-    def __repr__(self) -> str:
-        return f"MATRIX object with color {self.__matrix._global_col}"
+        self._global_col = check_color_format(color)
+        self._col = [self._global_col] * (WIDTH * HEIGHT)
+        self.total_toggler = False
 
-    def __getitem__(self, index: int) -> PIXEL:
-        """Get PIXEL object at index.
+    def fill(self, color):
+        col = check_color_format(color)
+        self.frame_buf.fill(col)
+        self.frame_buf.display()
 
-        Args:
-            index: Pixel index
+        self.total_toggler = color > 0
 
-        Returns:
-            A Pixel object
+        return None
 
-        Examples:
-            >>> matrix[0]             # get first Pixel
-        """
-        return self.strip[index]
+    def fill_rect(self, *args, **kwargs):
+        if len(args) == 3:
+            index, width, height = args
+            x, y = index2xy(index, WIDTH, HEIGHT)
+        elif len(args) == 4:
+            x, y, width, height = args
 
-    def on(self):
-        """Turn on the matrix.
+        _color = kwargs.get('color')
+        _color = check_color_format(
+            _color) if _color is not None else self._global_col
 
-        Examples:
-            >>> matrix.on()   # turn on all the matrix with current global color
-        """
-        self.__matrix.on()
+        self.total_toggler = _color > 0
+
+        self.frame_buf.fill_rect(x, y, width, height, _color)
+        self.frame_buf.display()
+
+    def rect(self, *args, **kwargs):
+        if len(args) == 3:
+            index, width, height = args
+            x, y = index2xy(index, WIDTH, HEIGHT)
+        elif len(args) == 4:
+            x, y, width, height = args
+
+        _color = kwargs.get('color')
+        _color = check_color_format(
+            _color) if _color is not None else self._global_col
+
+        self.total_toggler = _color > 0
+
+        self.frame_buf.rect(x, y, width, height, _color)
+        self.frame_buf.display()
+
+    # line(x_0, y_0, x_1, y_1, color)
+    def line(self, *args, **kwargs):
+        if len(args) == 2:
+            start, end = args
+            x_0, y_0 = index2xy(start, WIDTH, HEIGHT)
+            x_1, y_1 = index2xy(end, WIDTH, HEIGHT)
+        elif len(args) == 4:
+            x_0, y_0, x_1, y_1 = args
+
+        _color = kwargs.get('color')
+        _color = check_color_format(
+            _color) if _color is not None else self._global_col
+
+        self.total_toggler = _color > 0
+
+        self.frame_buf.line(x_0, y_0, x_1, y_1, _color)
+        self.frame_buf.display()
 
     def off(self):
-        """Turn off the matrix.
+        self.frame_buf.fill(0x000000)
+        self.frame_buf.display()
+        self.total_toggler = 0
 
-        Examples:
-            >>> matrix.off()   # turn off all the matrix with current global color
-        """
-        self.__matrix.off()
+    def on(self, color=None):
+        if color is not None:
+            self._global_col = check_color_format(color)
+
+        self.frame_buf.fill(self._global_col)
+        self.frame_buf.display()
+        self.total_toggler = 1
 
     def toggle(self):
-        """Turn on the matrix globally if the first Pixel is currently turned off and viceversa."""
-        self.__matrix.toggle()
+        if self.total_toggler == 1:
+            self.off()
+            self.total_toggler = 0
+        else:
+            self.on()
+            self.total_toggler = 1
 
-    def write(self, col: tuple = None) -> None:
-        """Manage the matrix globally. It writes a value (`int` or `tuple`) on the matrix (all the pixels).
+    def pixel(self, *args, **kwargs):
+        if len(args) == 1:
+            index = args[0]
+            x, y = index2xy(index, WIDTH, HEIGHT)
+        elif len(args) == 2:
+            x, y = args
 
-        Args:
-            col (tuple | int): if a `tuple` set `full_color` property and use it to turn on/off the whole Matrix, if a non-zero `int` turn on the whole Matrix using `full_property`. If zero, turn off it with `pybox.color.OFF`
+        _color = kwargs.get('color')
+        _color = check_color_format(
+            _color) if _color is not None else self._global_col
 
-        Examples:
-            >>> matrix.write(1)   # turn on the matrix with current matrix color
-            >>> matrix.write(0)   # turn off the matrix
-        """
-        self.__matrix.write(col)
+        self.frame_buf.pixel(x, y, color=_color)
+        self.frame_buf.display()
 
-    def deinit(self) -> None:
-        """Blank out the matrix and release the pin for other use."""
-        self.__matrix.deinit()
+    def deinit(self):
+        self._pixels.deinit()
 
     @property
-    def color(self) -> tuple[int]:
-        """Get/Set color of the matrix.
-
-        Returns:
-            color: color of the matrix in `tuple[int]` format
-        """
-        return self.__matrix.color
+    def color(self):
+        return self._global_col
 
     @color.setter
-    def color(self, color: tuple[int]):
-        self.__matrix.color = color
+    def color(self, col=RED):
+        self._global_col = check_color_format(col)
 
     @property
     def brightness(self) -> float:
@@ -320,8 +160,8 @@ class MATRIX:
         Returns:
             brightness: brightness of the matrix in `float` format
         """
-        return self.__matrix.brightness
+        return self._pixels.brightness
 
     @brightness.setter
     def brightness(self, value: float):
-        self.__matrix.brightness = value
+        self._pixels.brightness = value
