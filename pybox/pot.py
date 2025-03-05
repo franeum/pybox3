@@ -26,7 +26,6 @@ class POT:
 
     @property
     def value(self):
-        # return self.midivalue / 127
         _value = max(500, self._adc.value)
         _value = min(65000, _value) - 500
         rounded = round(_value / 64500, 3)
