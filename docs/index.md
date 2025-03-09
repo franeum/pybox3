@@ -5,10 +5,10 @@ by [Francesco Bianchi](https://www.francescobianchi.cloud)
 `pybox` is a didactical box, equipped with a *rp2040* chip (the same present in the [Raspberry Pi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/)) to manage the following devices: 
 
 - *RGB* led 
-- *ledstrip* of 12 pixels 
-- potentiometer 
-- button 
-- mini-speaker 
+- 25 RGB led matrix 
+- 2 potentiometers 
+- 2 buttons 
+- 2 mini-speakers 
 
 the project aims to help teachers to teach the programming of *microcontrollers* and students to learn by having fun and doing immediately practice without worrying about building any hardware. 
 The language used is python (to be clear [CircuitPython](https://circuitpython.org/)) and all you have to do is import a package called `pybox` and his various modules. 
