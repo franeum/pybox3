@@ -3,7 +3,7 @@ site_name: pybox
 docs_dir: docs
 
 theme:
-  name: readthedocs
+  name: terminal
   palette:
     primary: red
   font:
