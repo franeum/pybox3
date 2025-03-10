@@ -54,7 +54,7 @@ class LED:
             self.on()
 
     def deinit(self):
-        "Free the led to use the pin connected to it for another purpose"
+        "Free the led to use the pin for another purpose"
         self.led.deinit()
 
     @property
@@ -62,7 +62,7 @@ class LED:
         """Get/Set color of the led
 
         Returns:
-            color: color of the led in integer format
+            color: color of the led in integer or tuple format
         """
         return self.led.color
 
