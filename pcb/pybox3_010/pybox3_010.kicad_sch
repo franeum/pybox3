@@ -1607,23 +1607,9 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "ERRORE: i pot vanno alimentati con 3V3!!!"
-		(exclude_from_sim no)
-		(at 152.908 47.244 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "c8b54f02-1cd5-4b88-868a-a470f235d1cc")
-	)
 	(no_connect
 		(at 144.78 88.9)
 		(uuid "040231f7-5fef-4768-93de-0a8a977a1453")
-	)
-	(no_connect
-		(at 144.78 60.96)
-		(uuid "09350b6e-7e6c-43dd-b50b-ba7926fe576b")
 	)
 	(no_connect
 		(at 109.22 83.82)
@@ -1636,6 +1622,10 @@
 	(no_connect
 		(at 109.22 78.74)
 		(uuid "6671f57f-5ec8-43e0-80a0-fe4e6c48581e")
+	)
+	(no_connect
+		(at 144.78 58.42)
+		(uuid "b0fc7367-0278-40f3-832e-dbc4a356cfbf")
 	)
 	(no_connect
 		(at 144.78 78.74)
@@ -1787,16 +1777,6 @@
 	)
 	(wire
 		(pts
-			(xy 144.78 58.42) (xy 147.32 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4e295b08-2bcd-474c-9a2f-d0a68d13c386")
-	)
-	(wire
-		(pts
 			(xy 96.52 78.74) (xy 96.52 68.58)
 		)
 		(stroke
@@ -1907,13 +1887,23 @@
 	)
 	(wire
 		(pts
-			(xy 147.32 58.42) (xy 147.32 55.88)
+			(xy 147.32 55.88) (xy 147.32 60.96)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "bdd88c0d-2714-4e75-a759-c5b9c8dc47e1")
+	)
+	(wire
+		(pts
+			(xy 144.78 60.96) (xy 147.32 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb500590-a213-476d-8a66-e03698c41fcc")
 	)
 	(wire
 		(pts
