@@ -13,6 +13,10 @@ def __colortuple2colorint(color):
     return (r << 16) + (g << 8) + b
 
 
+def __colorint2colortuple(color):
+    return (color >> 16) & 255, (color >> 8) & 255, color & 255
+
+
 def __check_color_format(color):
     if isinstance(color, tuple):
         return __colortuple2colorint(color)
@@ -46,14 +50,14 @@ class PIXEL:
         self.buffer.display()
 
     def toggle(self):
-        if sum(self.buffer.buf[self.index:self.index+3]) != 0:
+        if sum(self.buffer.buf[self.index : self.index + 3]) != 0:
             self.off()
         else:
             self.on()
 
     @property
     def color(self):
-        return self._color
+        return __colorint2colortuple(self._color)
 
     @color.setter
     def color(self, col=RED):
@@ -73,10 +77,12 @@ class MATRIX:
         self._col = [self._global_col] * (WIDTH * HEIGHT)
         self.total_toggler = False
 
-        self.singletons = [PIXEL(self.frame_buf, x, self._global_col)
-                           for x in range(WIDTH * HEIGHT)]
+        self._singletons = [
+            PIXEL(self.frame_buf, x, self._global_col) for x in range(WIDTH * HEIGHT)
+        ]
 
     def fill(self, color):
+        """Fill the matrix with a color"""
         col = __check_color_format(color)
         self.frame_buf.fill(col)
         self.frame_buf.display()
@@ -86,6 +92,7 @@ class MATRIX:
         return None
 
     def fill_rect(self, *args, **kwargs):
+        """Draw a fill rect"""
         __chek_n_of_args(args, [3, 4])
 
         if len(args) == 3:
@@ -96,8 +103,7 @@ class MATRIX:
 
         _color = kwargs.get("color")
         _color = (
-            __check_color_format(
-                _color) if _color is not None else self._global_col
+            __check_color_format(_color) if _color is not None else self._global_col
         )
 
         self.total_toggler = _color > 0
@@ -106,6 +112,7 @@ class MATRIX:
         self.frame_buf.display()
 
     def rect(self, *args, **kwargs):
+        """Draw a (empty) rect"""
         __chek_n_of_args(args, [3, 4])
 
         if len(args) == 3:
@@ -116,8 +123,7 @@ class MATRIX:
 
         _color = kwargs.get("color")
         _color = (
-            __check_color_format(
-                _color) if _color is not None else self._global_col
+            __check_color_format(_color) if _color is not None else self._global_col
         )
 
         self.total_toggler = _color > 0
@@ -126,6 +132,7 @@ class MATRIX:
         self.frame_buf.display()
 
     def line(self, *args, **kwargs):
+        """Draw a line from a point to another"""
         __chek_n_of_args(args, [2, 4])
 
         if len(args) == 2:
@@ -137,8 +144,7 @@ class MATRIX:
 
         _color = kwargs.get("color")
         _color = (
-            __check_color_format(
-                _color) if _color is not None else self._global_col
+            __check_color_format(_color) if _color is not None else self._global_col
         )
 
         self.total_toggler = _color > 0
@@ -147,11 +153,13 @@ class MATRIX:
         self.frame_buf.display()
 
     def off(self):
+        "Off the whole matrix"
         self.frame_buf.fill(0x000000)
         self.frame_buf.display()
         self.total_toggler = 0
 
     def on(self, color=None):
+        "On the whole matrix"
         if color is not None:
             self._global_col = __check_color_format(color)
 
@@ -160,6 +168,7 @@ class MATRIX:
         self.total_toggler = 1
 
     def toggle(self):
+        "Toggle between on and off"
         if self.total_toggler == 1:
             self.off()
             self.total_toggler = 0
@@ -168,6 +177,7 @@ class MATRIX:
             self.total_toggler = 1
 
     def pixel(self, *args, **kwargs):
+        "Set a single pixel"
         __chek_n_of_args(args, [1, 2])
 
         if len(args) == 1:
@@ -178,19 +188,24 @@ class MATRIX:
 
         _color = kwargs.get("color")
         _color = (
-            __check_color_format(
-                _color) if _color is not None else self._global_col
+            __check_color_format(_color) if _color is not None else self._global_col
         )
 
         self.frame_buf.pixel(x, y, color=_color)
         self.frame_buf.display()
 
     def deinit(self):
+        "Free the pin of the matrix"
         self._pixels.deinit()
 
     @property
     def color(self):
-        return self._global_col
+        """Get/Set color of the matrix.
+
+        Returns:
+            color: color of the matrix in triple (r,g,b) format
+        """
+        return __colorint2colortuple(self._global_col)
 
     @color.setter
     def color(self, col=RED):
@@ -198,7 +213,7 @@ class MATRIX:
 
     @property
     def brightness(self) -> float:
-        """Get/Set color of the matrix.
+        """Get/Set brightness of the matrix.
 
         Returns:
             brightness: brightness of the matrix in `float` format
@@ -210,9 +225,7 @@ class MATRIX:
         self._pixels.brightness = value
 
     def __setitem__(self, index: int, item: tuple[int]) -> None:
-        # self._pixels[index] = self.__parse_color(index, item)
         pass
 
-    def __getitem__(self, index: int) -> tuple[int]:
-        # return PIXEL(self.frame_buf, index, self._global_col)
-        return self.singletons[index]
+    def __getitem__(self, index: int) -> PIXEL:
+        return self._singletons[index]
