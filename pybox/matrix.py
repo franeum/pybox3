@@ -30,8 +30,34 @@ def __chek_n_of_args(args, list_of_numbers):
 
 
 class PIXEL:
-    def __init__(self, index):
+    def __init__(self, buffer, index, color):
+        self.buffer = buffer
         self.index = index
+        self._color = color
+
+    def on(self):
+        x, y = __index2xy(self.index, WIDTH, HEIGHT)
+        self.buffer.pixel(x, y, color=self._color)
+        self.buffer.display()
+
+    def off(self):
+        x, y = __index2xy(self.index, WIDTH, HEIGHT)
+        self.buffer.pixel(x, y, color=0x000000)
+        self.buffer.display()
+
+    def toggle(self):
+        if sum(self.buffer.buf[self.index:self.index+3]) != 0:
+            self.off()
+        else:
+            self.on()
+
+    @property
+    def color(self):
+        return self._color
+
+    @color.setter
+    def color(self, col=RED):
+        self._color = __check_color_format(col)
 
 
 class MATRIX:
@@ -46,6 +72,9 @@ class MATRIX:
         self._global_col = __check_color_format(color)
         self._col = [self._global_col] * (WIDTH * HEIGHT)
         self.total_toggler = False
+
+        self.singletons = [PIXEL(self.frame_buf, x, self._global_col)
+                           for x in range(WIDTH * HEIGHT)]
 
     def fill(self, color):
         col = __check_color_format(color)
@@ -67,7 +96,8 @@ class MATRIX:
 
         _color = kwargs.get("color")
         _color = (
-            __check_color_format(_color) if _color is not None else self._global_col
+            __check_color_format(
+                _color) if _color is not None else self._global_col
         )
 
         self.total_toggler = _color > 0
@@ -86,7 +116,8 @@ class MATRIX:
 
         _color = kwargs.get("color")
         _color = (
-            __check_color_format(_color) if _color is not None else self._global_col
+            __check_color_format(
+                _color) if _color is not None else self._global_col
         )
 
         self.total_toggler = _color > 0
@@ -106,7 +137,8 @@ class MATRIX:
 
         _color = kwargs.get("color")
         _color = (
-            __check_color_format(_color) if _color is not None else self._global_col
+            __check_color_format(
+                _color) if _color is not None else self._global_col
         )
 
         self.total_toggler = _color > 0
@@ -146,7 +178,8 @@ class MATRIX:
 
         _color = kwargs.get("color")
         _color = (
-            __check_color_format(_color) if _color is not None else self._global_col
+            __check_color_format(
+                _color) if _color is not None else self._global_col
         )
 
         self.frame_buf.pixel(x, y, color=_color)
@@ -175,3 +208,11 @@ class MATRIX:
     @brightness.setter
     def brightness(self, value: float):
         self._pixels.brightness = value
+
+    def __setitem__(self, index: int, item: tuple[int]) -> None:
+        # self._pixels[index] = self.__parse_color(index, item)
+        pass
+
+    def __getitem__(self, index: int) -> tuple[int]:
+        # return PIXEL(self.frame_buf, index, self._global_col)
+        return self.singletons[index]
