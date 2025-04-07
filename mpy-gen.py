@@ -5,12 +5,13 @@ import mpy_cross as mpy
 from pathlib import Path
 import shutil
 import time
+import subprocess as sp
 
 _input, output = Path(".") / Path(sys.argv[1]), Path(".") / Path(sys.argv[2])
 
 print("GENERATING MPY...")
 for file in _input.glob("*.py"):
-    mpy.run(f"{file}")
+    sp.run(["./mpy-cross-linux-amd64-9.1.4.static", f"{file}"])
 
 time.sleep(1)
 print("\t...done")
