@@ -15,6 +15,7 @@ Examples:
 """
 
 from pybox.matrix import MATRIX
+from pybox.color import *
 
 
 class LED:
@@ -31,7 +32,7 @@ class LED:
         >>> led.on()
     """
 
-    def __init__(self, color=None, brightness=0.25):
+    def __init__(self, color=RED, brightness=0.25):
         self.led = MATRIX(color=color, brightness=brightness)
         self.toggler = 0
 
