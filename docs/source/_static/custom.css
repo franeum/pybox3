@@ -1,0 +1,31 @@
+img.logo {
+    max-height: 60px;
+    image-rendering: pixelated;
+}
+
+body {
+    font-family: 'Courier New', monospace !important;
+    /* Imposta il font monospace */
+    font-size: 18px;
+    /* Aumenta la dimensione dei caratteri */
+}
+
+pre,
+code {
+    font-family: 'Courier New', monospace !important;
+    /* Imposta monospace per il codice */
+    font-size: 16px;
+    /* Aumenta la dimensione del codice */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Courier New', monospace !important;
+    /* Imposta monospace per i titoli */
+    font-size: 32px;
+    /* Ingrossa i titoli */
+}
