@@ -29,6 +29,5 @@ by `Francesco Bianchi <https://www.francescobianchi.cloud>`_
    :maxdepth: 1
    :caption: Altri moduli
 
-   changelog
-   contributi
+   matrix_schemes
 

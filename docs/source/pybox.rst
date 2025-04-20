@@ -20,6 +20,14 @@ pybox.color module
    :undoc-members:
    :show-inheritance:
 
+pybox.encoder module
+--------------------
+
+.. automodule:: pybox.encoder
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pybox.led module
 ----------------
 

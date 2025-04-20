@@ -30,6 +30,7 @@ autodoc_mock_imports = [
     "analogio",
     "adafruit_midi",
     "simpleio",
+    "rotaryio",
 ]
 
 
