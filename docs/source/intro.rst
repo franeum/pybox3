@@ -18,3 +18,7 @@ Intro
 the project aims to help teachers to teach the programming of *microcontrollers* and students to learn by having fun and doing immediately practice without worrying about building any hardware. 
 The language used is python (to be clear `CircuitPython <https://circuitpython.org/>`_) and all you have to do is import a package called `pybox` and his various modules. 
 If you want to explore source code and hardware design you can visit this `repo <https://github.com/franeum/pybox3>`_.
+
+.. code-block:: bash
+
+  ls -la

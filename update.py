@@ -30,7 +30,6 @@ def copia_cartella(src: Path, dst: Path, overwrite: bool = False):
     print(f"Cartella copiata da '{src}' a '{dst}'")
 
 
-# Esempio di utilizzo
 if __name__ == "__main__":
     # Usa Path per creare percorsi compatibili con qualsiasi OS
     sorgente = Path("./mpy/pybox")
