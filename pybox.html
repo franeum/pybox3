@@ -1,0 +1,989 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="matrix schemes" href="matrix_schemes.html" /><link rel="prev" title="pybox" href="modules.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>pybox package - pybox 3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c910d55e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-background-primary: #ffffff;
+  --color-brand-primary: #ff00f7;
+  --color-brand-content: #ff00f7;
+  --color-sidebar-background: #ffffff;
+  --color-sidebar-link-text: #00f0ff;
+  --color-sidebar-link-text--top-level: #ff00f7;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-background-primary: #ffffff;
+  --color-brand-primary: #ff00f7;
+  --color-brand-content: #00f0ff;
+  --color-sidebar-background: #ffffff;
+  --color-sidebar-link-text: #00f0ff;
+  --color-sidebar-link-text--top-level: #ff00f7;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-background-primary: #ffffff;
+  --color-brand-primary: #ff00f7;
+  --color-brand-content: #00f0ff;
+  --color-sidebar-background: #ffffff;
+  --color-sidebar-link-text: #00f0ff;
+  --color-sidebar-link-text--top-level: #ff00f7;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">pybox 3 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">pybox 3 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Introduzione</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using.html">using</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Riferimento API</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="modules.html">pybox</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of pybox</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">pybox package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Altri moduli</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="matrix_schemes.html">matrix schemes</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/pybox.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="pybox-package">
+<h1>pybox package<a class="headerlink" href="#pybox-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-pybox.button">
+<span id="pybox-button-module"></span><h2>pybox.button module<a class="headerlink" href="#module-pybox.button" title="Link to this heading">¶</a></h2>
+<p><em>This module help you to manage integrated button.</em></p>
+<p>—</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pybox.button</span><span class="w"> </span><span class="kn">import</span> <span class="n">SIMPLEBUTTON</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">but</span> <span class="o">=</span> <span class="n">SIMPLEBUTTON</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">but</span><span class="o">.</span><span class="n">value</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># press and hold the button</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">but</span><span class="o">.</span><span class="n">value</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>The module consists basically in two classes:</dt><dd><ul class="simple">
+<li><p><cite>SIMPLEBUTTON</cite>: to get the value of the button</p></li>
+<li><p><cite>BUTTON</cite>: to bind custom functions to button behavior</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="pybox.button.BUTTON">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybox.button.</span></span><span class="sig-name descname"><span class="pre">BUTTON</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">board.GP6</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/button.html#BUTTON"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.button.BUTTON" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><em>Button class.</em></p>
+<p>—</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">but</span> <span class="o">=</span> <span class="n">BUTTON</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">press_callback</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PRESSED&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">release_callback</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RELEASED&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">but</span><span class="o">.</span><span class="n">press_handler</span><span class="p">(</span><span class="n">press_callback</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">but</span><span class="o">.</span><span class="n">release_handler</span><span class="p">(</span><span class="n">release_callback</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">but</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.button.BUTTON.deinit">
+<span class="sig-name descname"><span class="pre">deinit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/button.html#BUTTON.deinit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.button.BUTTON.deinit" title="Link to this definition">¶</a></dt>
+<dd><p>Turn off the button.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.button.BUTTON.press_handler">
+<span class="sig-name descname"><span class="pre">press_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pybox/button.html#BUTTON.press_handler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.button.BUTTON.press_handler" title="Link to this definition">¶</a></dt>
+<dd><p>Bind a function to call when button is pressed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>callback</strong> – a function to be executed when button is pressed.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">press_callback</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PRESSED&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">push</span> <span class="o">=</span> <span class="n">BUTTON</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">push</span><span class="o">.</span><span class="n">press_handler</span><span class="p">(</span><span class="n">press_callback</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="c1"># print PRESSED on press button</span>
+<span class="gp">... </span>    <span class="n">push</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybox.button.BUTTON.press_time">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">press_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#pybox.button.BUTTON.press_time" title="Link to this definition">¶</a></dt>
+<dd><p>Time of pressure.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.button.BUTTON.release_handler">
+<span class="sig-name descname"><span class="pre">release_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pybox/button.html#BUTTON.release_handler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.button.BUTTON.release_handler" title="Link to this definition">¶</a></dt>
+<dd><p>Bind a function to call when button is released.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>callback</strong> (<em>callable</em>) – a function to be executed when button is released.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">release_callback</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RELEASED&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">push</span> <span class="o">=</span> <span class="n">BUTTON</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">push</span><span class="o">.</span><span class="n">release_handler</span><span class="p">(</span><span class="n">release_callback</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="c1"># print RELEASED on release button</span>
+<span class="gp">... </span>    <span class="n">push</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.button.BUTTON.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pybox/button.html#BUTTON.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.button.BUTTON.update" title="Link to this definition">¶</a></dt>
+<dd><p>Update button state on main loop.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">but</span> <span class="o">=</span> <span class="n">BUTTON</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">but</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybox.button.SIMPLEBUTTON">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybox.button.</span></span><span class="sig-name descname"><span class="pre">SIMPLEBUTTON</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">button</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/button.html#SIMPLEBUTTON"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.button.SIMPLEBUTTON" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><em>SimpleButton class.</em></p>
+<p>—</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">but</span> <span class="o">=</span> <span class="n">SIMPLEBUTTON</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">but</span><span class="o">.</span><span class="n">value</span>
+<span class="go">0                           # if button is not pressed</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.button.SIMPLEBUTTON.deinit">
+<span class="sig-name descname"><span class="pre">deinit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/button.html#SIMPLEBUTTON.deinit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.button.SIMPLEBUTTON.deinit" title="Link to this definition">¶</a></dt>
+<dd><p>Turn off the button.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybox.button.SIMPLEBUTTON.value">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pybox.button.SIMPLEBUTTON.value" title="Link to this definition">¶</a></dt>
+<dd><p>Raw button value.</p>
+<p>It contains the value of the button based on its status: 1 if pressed, 0 otherwise.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">but</span><span class="o">.</span><span class="n">value</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pybox.color">
+<span id="pybox-color-module"></span><h2>pybox.color module<a class="headerlink" href="#module-pybox.color" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pybox.color.get_random_color">
+<span class="sig-prename descclassname"><span class="pre">pybox.color.</span></span><span class="sig-name descname"><span class="pre">get_random_color</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/color.html#get_random_color"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.color.get_random_color" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-pybox.encoder">
+<span id="pybox-encoder-module"></span><h2>pybox.encoder module<a class="headerlink" href="#module-pybox.encoder" title="Link to this heading">¶</a></h2>
+<p>Module to manage rotary encoder</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pybox.encoder.ENC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybox.encoder.</span></span><span class="sig-name descname"><span class="pre">ENC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">127</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/encoder.html#ENC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.encoder.ENC" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pybox.encoder.SuperEnc" title="pybox.encoder.SuperEnc"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperEnc</span></code></a></p>
+<p>This class manages the rotary encoder returning 1 or -1,
+depending on direction of the rotation</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="pybox.encoder.ENC.bounds">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bounds</span></span><a class="headerlink" href="#pybox.encoder.ENC.bounds" title="Link to this definition">¶</a></dt>
+<dd><p>Get/set (min, max) values</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybox.encoder.ENC.changed">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">changed</span></span><a class="headerlink" href="#pybox.encoder.ENC.changed" title="Link to this definition">¶</a></dt>
+<dd><p>Verifies if the encoder value is changed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the new position is different from the last, otherwise False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybox.encoder.ENC.direction">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">direction</span></span><a class="headerlink" href="#pybox.encoder.ENC.direction" title="Link to this definition">¶</a></dt>
+<dd><p>Get direction. 1 if clockwise, -1 if counter-clockwise, 0 if no movement.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybox.encoder.ENC.maxval">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">maxval</span></span><a class="headerlink" href="#pybox.encoder.ENC.maxval" title="Link to this definition">¶</a></dt>
+<dd><p>Get/set max value</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybox.encoder.ENC.minval">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">minval</span></span><a class="headerlink" href="#pybox.encoder.ENC.minval" title="Link to this definition">¶</a></dt>
+<dd><p>Get/set min value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.encoder.ENC.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/encoder.html#ENC.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.encoder.ENC.update" title="Link to this definition">¶</a></dt>
+<dd><p>Update encoder position. To be called every time you need new value</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybox.encoder.ENC.value">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#pybox.encoder.ENC.value" title="Link to this definition">¶</a></dt>
+<dd><p>Get/set value</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybox.encoder.SuperEnc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybox.encoder.</span></span><span class="sig-name descname"><span class="pre">SuperEnc</span></span><a class="reference internal" href="_modules/pybox/encoder.html#SuperEnc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.encoder.SuperEnc" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Superclass SuperEnc. You shouldn’t use this directly.</p>
+</dd></dl>
+
+</section>
+<section id="module-pybox.led">
+<span id="pybox-led-module"></span><h2>pybox.led module<a class="headerlink" href="#module-pybox.led" title="Link to this heading">¶</a></h2>
+<p><em>This module help you to manage fixed rectangle of RGB leds inside the matrix</em></p>
+<p>—</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pybox.led</span><span class="w"> </span><span class="kn">import</span> <span class="n">LED</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pybox.color</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">led</span> <span class="o">=</span> <span class="n">LED</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">led</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLUE</span>
+<span class="go"># turn on the led</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+<span class="go"># turn off the led</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="pybox.led.LED">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybox.led.</span></span><span class="sig-name descname"><span class="pre">LED</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16711680</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brightness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/led.html#LED"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.led.LED" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>LED class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<em>str</em><em>, </em><em>optional</em>) – led to drive, ‘internal’, ‘external’ or a board string (i.e. board.GP18).</p></li>
+<li><p><strong>color</strong> (<em>tuple</em><em>[</em><em>int</em><em>]</em><em>, </em><em>optional</em>) – color in (r, g, b) format.</p></li>
+<li><p><strong>brightness</strong> (<em>float</em><em>, </em><em>optional</em>) – value between 0.0 and 1.0.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">led</span> <span class="o">=</span> <span class="n">LED</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">led</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLUE</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="pybox.led.LED.brightness">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">brightness</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#pybox.led.LED.brightness" title="Link to this definition">¶</a></dt>
+<dd><p>Get/Set brightness of the matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>brightness of the matrix in <cite>float</cite> format</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>brightness</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybox.led.LED.color">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#pybox.led.LED.color" title="Link to this definition">¶</a></dt>
+<dd><p>Get/Set color of the led</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>color of the led in integer or tuple format</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>color</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.led.LED.deinit">
+<span class="sig-name descname"><span class="pre">deinit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/led.html#LED.deinit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.led.LED.deinit" title="Link to this definition">¶</a></dt>
+<dd><p>Free the led to use the pin for another purpose</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.led.LED.off">
+<span class="sig-name descname"><span class="pre">off</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/led.html#LED.off"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.led.LED.off" title="Link to this definition">¶</a></dt>
+<dd><p>Turn off the led</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.led.LED.on">
+<span class="sig-name descname"><span class="pre">on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/led.html#LED.on"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.led.LED.on" title="Link to this definition">¶</a></dt>
+<dd><p>Turns the led on</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>color</strong> – set color, defaults to None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.led.LED.toggle">
+<span class="sig-name descname"><span class="pre">toggle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/led.html#LED.toggle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.led.LED.toggle" title="Link to this definition">¶</a></dt>
+<dd><p>Toggle led between on and off</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pybox.matrix">
+<span id="pybox-matrix-module"></span><h2>pybox.matrix module<a class="headerlink" href="#module-pybox.matrix" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pybox.matrix.MATRIX">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybox.matrix.</span></span><span class="sig-name descname"><span class="pre">MATRIX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16711680</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brightness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/matrix.html#MATRIX"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.matrix.MATRIX" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="pybox.matrix.MATRIX.brightness">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">brightness</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#pybox.matrix.MATRIX.brightness" title="Link to this definition">¶</a></dt>
+<dd><p>Get/Set brightness of the matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>brightness of the matrix in <cite>float</cite> format</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>brightness</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybox.matrix.MATRIX.color">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#pybox.matrix.MATRIX.color" title="Link to this definition">¶</a></dt>
+<dd><p>Get/Set color of the matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>color of the matrix in triple (r,g,b) format</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>color</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.matrix.MATRIX.deinit">
+<span class="sig-name descname"><span class="pre">deinit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/matrix.html#MATRIX.deinit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.matrix.MATRIX.deinit" title="Link to this definition">¶</a></dt>
+<dd><p>Free the pin of the matrix</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.matrix.MATRIX.fill">
+<span class="sig-name descname"><span class="pre">fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/matrix.html#MATRIX.fill"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.matrix.MATRIX.fill" title="Link to this definition">¶</a></dt>
+<dd><p>Fill the matrix with a color</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.matrix.MATRIX.fill_rect">
+<span class="sig-name descname"><span class="pre">fill_rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/matrix.html#MATRIX.fill_rect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.matrix.MATRIX.fill_rect" title="Link to this definition">¶</a></dt>
+<dd><p>Draw a fill rect</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.matrix.MATRIX.line">
+<span class="sig-name descname"><span class="pre">line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/matrix.html#MATRIX.line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.matrix.MATRIX.line" title="Link to this definition">¶</a></dt>
+<dd><p>Draw a line from a point to another</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.matrix.MATRIX.off">
+<span class="sig-name descname"><span class="pre">off</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/matrix.html#MATRIX.off"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.matrix.MATRIX.off" title="Link to this definition">¶</a></dt>
+<dd><p>Off the whole matrix</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.matrix.MATRIX.on">
+<span class="sig-name descname"><span class="pre">on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/matrix.html#MATRIX.on"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.matrix.MATRIX.on" title="Link to this definition">¶</a></dt>
+<dd><p>On the whole matrix</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.matrix.MATRIX.pixel">
+<span class="sig-name descname"><span class="pre">pixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/matrix.html#MATRIX.pixel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.matrix.MATRIX.pixel" title="Link to this definition">¶</a></dt>
+<dd><p>Set a single pixel</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.matrix.MATRIX.rect">
+<span class="sig-name descname"><span class="pre">rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/matrix.html#MATRIX.rect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.matrix.MATRIX.rect" title="Link to this definition">¶</a></dt>
+<dd><p>Draw a (empty) rect</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.matrix.MATRIX.toggle">
+<span class="sig-name descname"><span class="pre">toggle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/matrix.html#MATRIX.toggle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.matrix.MATRIX.toggle" title="Link to this definition">¶</a></dt>
+<dd><p>Toggle between on and off</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybox.matrix.PIXEL">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybox.matrix.</span></span><span class="sig-name descname"><span class="pre">PIXEL</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/matrix.html#PIXEL"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.matrix.PIXEL" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="pybox.matrix.PIXEL.color">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#pybox.matrix.PIXEL.color" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.matrix.PIXEL.off">
+<span class="sig-name descname"><span class="pre">off</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/matrix.html#PIXEL.off"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.matrix.PIXEL.off" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.matrix.PIXEL.on">
+<span class="sig-name descname"><span class="pre">on</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/matrix.html#PIXEL.on"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.matrix.PIXEL.on" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.matrix.PIXEL.toggle">
+<span class="sig-name descname"><span class="pre">toggle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/matrix.html#PIXEL.toggle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.matrix.PIXEL.toggle" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pybox.pot">
+<span id="pybox-pot-module"></span><h2>pybox.pot module<a class="headerlink" href="#module-pybox.pot" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pybox.pot.POT">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybox.pot.</span></span><span class="sig-name descname"><span class="pre">POT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pot_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/pot.html#POT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.pot.POT" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="pybox.pot.POT.midivalue">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">midivalue</span></span><a class="headerlink" href="#pybox.pot.POT.midivalue" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybox.pot.POT.rawvalue">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rawvalue</span></span><a class="headerlink" href="#pybox.pot.POT.rawvalue" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybox.pot.POT.value">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#pybox.pot.POT.value" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pybox.simplemidi">
+<span id="pybox-simplemidi-module"></span><h2>pybox.simplemidi module<a class="headerlink" href="#module-pybox.simplemidi" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pybox.simplemidi.MIDI">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybox.simplemidi.</span></span><span class="sig-name descname"><span class="pre">MIDI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/simplemidi.html#MIDI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.simplemidi.MIDI" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>MIDI class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>out_channel</strong> (<em>int</em><em>, </em><em>optional</em>) – value between 0 and 15, default = 0</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">midi</span> <span class="o">=</span> <span class="n">MIDI</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">midi</span><span class="o">.</span><span class="n">note_on</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">midi</span><span class="o">.</span><span class="n">note_off</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.simplemidi.MIDI.cc">
+<span class="sig-name descname"><span class="pre">cc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctrl_num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctrl_val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/simplemidi.html#MIDI.cc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.simplemidi.MIDI.cc" title="Link to this definition">¶</a></dt>
+<dd><p>Send control change message</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.simplemidi.MIDI.note_off">
+<span class="sig-name descname"><span class="pre">note_off</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pitch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/simplemidi.html#MIDI.note_off"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.simplemidi.MIDI.note_off" title="Link to this definition">¶</a></dt>
+<dd><p>Send Note Off message</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.simplemidi.MIDI.note_on">
+<span class="sig-name descname"><span class="pre">note_on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pitch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/simplemidi.html#MIDI.note_on"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.simplemidi.MIDI.note_on" title="Link to this definition">¶</a></dt>
+<dd><p>Send Note On message</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybox.simplemidi.MIDI.out_channel">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">out_channel</span></span><a class="headerlink" href="#pybox.simplemidi.MIDI.out_channel" title="Link to this definition">¶</a></dt>
+<dd><p>Set out channel</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pybox.tone">
+<span id="pybox-tone-module"></span><h2>pybox.tone module<a class="headerlink" href="#module-pybox.tone" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pybox.tone.TONE">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybox.tone.</span></span><span class="sig-name descname"><span class="pre">TONE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buz_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/tone.html#TONE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.tone.TONE" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.tone.TONE.mplay">
+<span class="sig-name descname"><span class="pre">mplay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">midinote</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/tone.html#TONE.mplay"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.tone.TONE.mplay" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybox.tone.TONE.play">
+<span class="sig-name descname"><span class="pre">play</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">note</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">440</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/tone.html#TONE.play"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.tone.TONE.play" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pybox.tone.mtof">
+<span class="sig-prename descclassname"><span class="pre">pybox.tone.</span></span><span class="sig-name descname"><span class="pre">mtof</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybox/tone.html#mtof"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybox.tone.mtof" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-pybox">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pybox" title="Link to this heading">¶</a></h2>
+<p>Manage pybox hardware.</p>
+<p>Modules exported by this package:
+- <cite>button</cite>: black button manager
+- <cite>color</cite>: contains tuples representing various colors
+- <cite>led</cite>: internal or external led manage
+- <cite>pot</cite>: integrated pontiometer manager
+- <cite>matrix</cite>: 25 rgb led matrix manager
+- <cite>tone</cite>: tone generator to produce sound from integrated speaker
+- <cite>simplemidi</cite>: simple midi sender</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="matrix_schemes.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">matrix schemes</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="modules.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">pybox</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, Francesco Bianchi
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">pybox package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-pybox.button">pybox.button module</a><ul>
+<li><a class="reference internal" href="#pybox.button.BUTTON"><code class="docutils literal notranslate"><span class="pre">BUTTON</span></code></a><ul>
+<li><a class="reference internal" href="#pybox.button.BUTTON.deinit"><code class="docutils literal notranslate"><span class="pre">BUTTON.deinit()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.button.BUTTON.press_handler"><code class="docutils literal notranslate"><span class="pre">BUTTON.press_handler()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.button.BUTTON.press_time"><code class="docutils literal notranslate"><span class="pre">BUTTON.press_time</span></code></a></li>
+<li><a class="reference internal" href="#pybox.button.BUTTON.release_handler"><code class="docutils literal notranslate"><span class="pre">BUTTON.release_handler()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.button.BUTTON.update"><code class="docutils literal notranslate"><span class="pre">BUTTON.update()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pybox.button.SIMPLEBUTTON"><code class="docutils literal notranslate"><span class="pre">SIMPLEBUTTON</span></code></a><ul>
+<li><a class="reference internal" href="#pybox.button.SIMPLEBUTTON.deinit"><code class="docutils literal notranslate"><span class="pre">SIMPLEBUTTON.deinit()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.button.SIMPLEBUTTON.value"><code class="docutils literal notranslate"><span class="pre">SIMPLEBUTTON.value</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pybox.color">pybox.color module</a><ul>
+<li><a class="reference internal" href="#pybox.color.get_random_color"><code class="docutils literal notranslate"><span class="pre">get_random_color()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pybox.encoder">pybox.encoder module</a><ul>
+<li><a class="reference internal" href="#pybox.encoder.ENC"><code class="docutils literal notranslate"><span class="pre">ENC</span></code></a><ul>
+<li><a class="reference internal" href="#pybox.encoder.ENC.bounds"><code class="docutils literal notranslate"><span class="pre">ENC.bounds</span></code></a></li>
+<li><a class="reference internal" href="#pybox.encoder.ENC.changed"><code class="docutils literal notranslate"><span class="pre">ENC.changed</span></code></a></li>
+<li><a class="reference internal" href="#pybox.encoder.ENC.direction"><code class="docutils literal notranslate"><span class="pre">ENC.direction</span></code></a></li>
+<li><a class="reference internal" href="#pybox.encoder.ENC.maxval"><code class="docutils literal notranslate"><span class="pre">ENC.maxval</span></code></a></li>
+<li><a class="reference internal" href="#pybox.encoder.ENC.minval"><code class="docutils literal notranslate"><span class="pre">ENC.minval</span></code></a></li>
+<li><a class="reference internal" href="#pybox.encoder.ENC.update"><code class="docutils literal notranslate"><span class="pre">ENC.update()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.encoder.ENC.value"><code class="docutils literal notranslate"><span class="pre">ENC.value</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pybox.encoder.SuperEnc"><code class="docutils literal notranslate"><span class="pre">SuperEnc</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pybox.led">pybox.led module</a><ul>
+<li><a class="reference internal" href="#pybox.led.LED"><code class="docutils literal notranslate"><span class="pre">LED</span></code></a><ul>
+<li><a class="reference internal" href="#pybox.led.LED.brightness"><code class="docutils literal notranslate"><span class="pre">LED.brightness</span></code></a></li>
+<li><a class="reference internal" href="#pybox.led.LED.color"><code class="docutils literal notranslate"><span class="pre">LED.color</span></code></a></li>
+<li><a class="reference internal" href="#pybox.led.LED.deinit"><code class="docutils literal notranslate"><span class="pre">LED.deinit()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.led.LED.off"><code class="docutils literal notranslate"><span class="pre">LED.off()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.led.LED.on"><code class="docutils literal notranslate"><span class="pre">LED.on()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.led.LED.toggle"><code class="docutils literal notranslate"><span class="pre">LED.toggle()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pybox.matrix">pybox.matrix module</a><ul>
+<li><a class="reference internal" href="#pybox.matrix.MATRIX"><code class="docutils literal notranslate"><span class="pre">MATRIX</span></code></a><ul>
+<li><a class="reference internal" href="#pybox.matrix.MATRIX.brightness"><code class="docutils literal notranslate"><span class="pre">MATRIX.brightness</span></code></a></li>
+<li><a class="reference internal" href="#pybox.matrix.MATRIX.color"><code class="docutils literal notranslate"><span class="pre">MATRIX.color</span></code></a></li>
+<li><a class="reference internal" href="#pybox.matrix.MATRIX.deinit"><code class="docutils literal notranslate"><span class="pre">MATRIX.deinit()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.matrix.MATRIX.fill"><code class="docutils literal notranslate"><span class="pre">MATRIX.fill()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.matrix.MATRIX.fill_rect"><code class="docutils literal notranslate"><span class="pre">MATRIX.fill_rect()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.matrix.MATRIX.line"><code class="docutils literal notranslate"><span class="pre">MATRIX.line()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.matrix.MATRIX.off"><code class="docutils literal notranslate"><span class="pre">MATRIX.off()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.matrix.MATRIX.on"><code class="docutils literal notranslate"><span class="pre">MATRIX.on()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.matrix.MATRIX.pixel"><code class="docutils literal notranslate"><span class="pre">MATRIX.pixel()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.matrix.MATRIX.rect"><code class="docutils literal notranslate"><span class="pre">MATRIX.rect()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.matrix.MATRIX.toggle"><code class="docutils literal notranslate"><span class="pre">MATRIX.toggle()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pybox.matrix.PIXEL"><code class="docutils literal notranslate"><span class="pre">PIXEL</span></code></a><ul>
+<li><a class="reference internal" href="#pybox.matrix.PIXEL.color"><code class="docutils literal notranslate"><span class="pre">PIXEL.color</span></code></a></li>
+<li><a class="reference internal" href="#pybox.matrix.PIXEL.off"><code class="docutils literal notranslate"><span class="pre">PIXEL.off()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.matrix.PIXEL.on"><code class="docutils literal notranslate"><span class="pre">PIXEL.on()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.matrix.PIXEL.toggle"><code class="docutils literal notranslate"><span class="pre">PIXEL.toggle()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pybox.pot">pybox.pot module</a><ul>
+<li><a class="reference internal" href="#pybox.pot.POT"><code class="docutils literal notranslate"><span class="pre">POT</span></code></a><ul>
+<li><a class="reference internal" href="#pybox.pot.POT.midivalue"><code class="docutils literal notranslate"><span class="pre">POT.midivalue</span></code></a></li>
+<li><a class="reference internal" href="#pybox.pot.POT.rawvalue"><code class="docutils literal notranslate"><span class="pre">POT.rawvalue</span></code></a></li>
+<li><a class="reference internal" href="#pybox.pot.POT.value"><code class="docutils literal notranslate"><span class="pre">POT.value</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pybox.simplemidi">pybox.simplemidi module</a><ul>
+<li><a class="reference internal" href="#pybox.simplemidi.MIDI"><code class="docutils literal notranslate"><span class="pre">MIDI</span></code></a><ul>
+<li><a class="reference internal" href="#pybox.simplemidi.MIDI.cc"><code class="docutils literal notranslate"><span class="pre">MIDI.cc()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.simplemidi.MIDI.note_off"><code class="docutils literal notranslate"><span class="pre">MIDI.note_off()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.simplemidi.MIDI.note_on"><code class="docutils literal notranslate"><span class="pre">MIDI.note_on()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.simplemidi.MIDI.out_channel"><code class="docutils literal notranslate"><span class="pre">MIDI.out_channel</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pybox.tone">pybox.tone module</a><ul>
+<li><a class="reference internal" href="#pybox.tone.TONE"><code class="docutils literal notranslate"><span class="pre">TONE</span></code></a><ul>
+<li><a class="reference internal" href="#pybox.tone.TONE.mplay"><code class="docutils literal notranslate"><span class="pre">TONE.mplay()</span></code></a></li>
+<li><a class="reference internal" href="#pybox.tone.TONE.play"><code class="docutils literal notranslate"><span class="pre">TONE.play()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pybox.tone.mtof"><code class="docutils literal notranslate"><span class="pre">mtof()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pybox">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=ba26cd90"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    </body>
+</html>
