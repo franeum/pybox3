@@ -3,12 +3,13 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+        <link rel="prefetch" href="../../_static/logo.png" as="image" />
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
         <title>pybox.matrix - pybox 3 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=c910d55e" />
     
     
@@ -16,8 +17,8 @@
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   --color-background-primary: #ffffff;
   --color-brand-primary: #ff00f7;
   --color-brand-content: #ff00f7;
@@ -28,8 +29,8 @@
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   --color-background-primary: #ffffff;
   --color-brand-primary: #ff00f7;
   --color-brand-content: #00f0ff;
@@ -40,8 +41,8 @@
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   --color-background-primary: #ffffff;
   --color-brand-primary: #ff00f7;
   --color-brand-content: #00f0ff;
@@ -206,7 +207,6 @@
     <div class="sidebar-container">
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
-  
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../../_static/logo.png" alt="Logo"/>
   </div>
@@ -280,27 +280,27 @@
 <span class="n">HEIGHT</span> <span class="o">=</span> <span class="mi">5</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">__colortuple2colorint</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_colortuple2colorint</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
     <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">color</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">r</span> <span class="o">&lt;&lt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">g</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">__colorint2colortuple</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_colorint2colortuple</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">color</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">255</span><span class="p">,</span> <span class="p">(</span><span class="n">color</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">255</span><span class="p">,</span> <span class="n">color</span> <span class="o">&amp;</span> <span class="mi">255</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">__check_color_format</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_check_color_format</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">__colortuple2colorint</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_colortuple2colorint</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">color</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">__index2xy</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">n_rows</span><span class="p">,</span> <span class="n">n_cols</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_index2xy</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">n_rows</span><span class="p">,</span> <span class="n">n_cols</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">index</span> <span class="o">%</span> <span class="n">n_rows</span><span class="p">,</span> <span class="n">index</span> <span class="o">//</span> <span class="n">n_cols</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">__chek_n_of_args</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">list_of_numbers</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_chek_n_of_args</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">list_of_numbers</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">list_of_numbers</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Wrong number of arguments&quot;</span><span class="p">)</span>
 
@@ -316,7 +316,7 @@
 <div class="viewcode-block" id="PIXEL.on">
 <a class="viewcode-back" href="../../pybox.html#pybox.matrix.PIXEL.on">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">__index2xy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">_index2xy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">display</span><span class="p">()</span></div>
 
@@ -324,7 +324,7 @@
 <div class="viewcode-block" id="PIXEL.off">
 <a class="viewcode-back" href="../../pybox.html#pybox.matrix.PIXEL.off">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">off</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">__index2xy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">_index2xy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="mh">0x000000</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">display</span><span class="p">()</span></div>
 
@@ -332,7 +332,10 @@
 <div class="viewcode-block" id="PIXEL.toggle">
 <a class="viewcode-back" href="../../pybox.html#pybox.matrix.PIXEL.toggle">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">toggle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">buf</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">3</span><span class="p">])</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">_index2xy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">)</span>
+        <span class="n">current_color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># ottieni il colore attuale (int)</span>
+
+        <span class="k">if</span> <span class="n">current_color</span> <span class="o">!=</span> <span class="mh">0x000000</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">on</span><span class="p">()</span></div>
@@ -340,11 +343,11 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">__colorint2colortuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_colorint2colortuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="p">)</span>
 
     <span class="nd">@color</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">RED</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_color</span> <span class="o">=</span> <span class="n">__check_color_format</span><span class="p">(</span><span class="n">col</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_color</span> <span class="o">=</span> <span class="n">_check_color_format</span><span class="p">(</span><span class="n">col</span><span class="p">)</span></div>
 
 
 
@@ -359,9 +362,9 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_pixels</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span> <span class="n">alternating</span><span class="o">=</span><span class="kc">False</span>
         <span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_global_col</span> <span class="o">=</span> <span class="n">__check_color_format</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_global_col</span> <span class="o">=</span> <span class="n">_check_color_format</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_col</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_global_col</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">WIDTH</span> <span class="o">*</span> <span class="n">HEIGHT</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">total_toggler</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="kc">False</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_singletons</span> <span class="o">=</span> <span class="p">[</span>
             <span class="n">PIXEL</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_buf</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_col</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">WIDTH</span> <span class="o">*</span> <span class="n">HEIGHT</span><span class="p">)</span>
@@ -371,11 +374,11 @@
 <a class="viewcode-back" href="../../pybox.html#pybox.matrix.MATRIX.fill">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">fill</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Fill the matrix with a color&quot;&quot;&quot;</span>
-        <span class="n">col</span> <span class="o">=</span> <span class="n">__check_color_format</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+        <span class="n">col</span> <span class="o">=</span> <span class="n">_check_color_format</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_buf</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_buf</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">total_toggler</span> <span class="o">=</span> <span class="n">color</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="n">color</span> <span class="o">&gt;</span> <span class="mi">0</span>
 
         <span class="k">return</span> <span class="kc">None</span></div>
 
@@ -384,20 +387,18 @@
 <a class="viewcode-back" href="../../pybox.html#pybox.matrix.MATRIX.fill_rect">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">fill_rect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Draw a fill rect&quot;&quot;&quot;</span>
-        <span class="n">__chek_n_of_args</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+        <span class="n">_chek_n_of_args</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
             <span class="n">index</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">args</span>
-            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">__index2xy</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">)</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">_index2xy</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">args</span>
 
         <span class="n">_color</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">)</span>
-        <span class="n">_color</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">__check_color_format</span><span class="p">(</span><span class="n">_color</span><span class="p">)</span> <span class="k">if</span> <span class="n">_color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_col</span>
-        <span class="p">)</span>
+        <span class="n">_color</span> <span class="o">=</span> <span class="n">_check_color_format</span><span class="p">(</span><span class="n">_color</span><span class="p">)</span> <span class="k">if</span> <span class="n">_color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_col</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">total_toggler</span> <span class="o">=</span> <span class="n">_color</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="n">_color</span> <span class="o">&gt;</span> <span class="mi">0</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_buf</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">_color</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_buf</span><span class="o">.</span><span class="n">display</span><span class="p">()</span></div>
@@ -407,20 +408,18 @@
 <a class="viewcode-back" href="../../pybox.html#pybox.matrix.MATRIX.rect">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">rect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Draw a (empty) rect&quot;&quot;&quot;</span>
-        <span class="n">__chek_n_of_args</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+        <span class="n">_chek_n_of_args</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
             <span class="n">index</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">args</span>
-            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">__index2xy</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">)</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">_index2xy</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">args</span>
 
         <span class="n">_color</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">)</span>
-        <span class="n">_color</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">__check_color_format</span><span class="p">(</span><span class="n">_color</span><span class="p">)</span> <span class="k">if</span> <span class="n">_color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_col</span>
-        <span class="p">)</span>
+        <span class="n">_color</span> <span class="o">=</span> <span class="n">_check_color_format</span><span class="p">(</span><span class="n">_color</span><span class="p">)</span> <span class="k">if</span> <span class="n">_color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_col</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">total_toggler</span> <span class="o">=</span> <span class="n">_color</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="n">_color</span> <span class="o">&gt;</span> <span class="mi">0</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_buf</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">_color</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_buf</span><span class="o">.</span><span class="n">display</span><span class="p">()</span></div>
@@ -430,21 +429,19 @@
 <a class="viewcode-back" href="../../pybox.html#pybox.matrix.MATRIX.line">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Draw a line from a point to another&quot;&quot;&quot;</span>
-        <span class="n">__chek_n_of_args</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+        <span class="n">_chek_n_of_args</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">args</span>
-            <span class="n">x_0</span><span class="p">,</span> <span class="n">y_0</span> <span class="o">=</span> <span class="n">__index2xy</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">)</span>
-            <span class="n">x_1</span><span class="p">,</span> <span class="n">y_1</span> <span class="o">=</span> <span class="n">__index2xy</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">)</span>
+            <span class="n">x_0</span><span class="p">,</span> <span class="n">y_0</span> <span class="o">=</span> <span class="n">_index2xy</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">)</span>
+            <span class="n">x_1</span><span class="p">,</span> <span class="n">y_1</span> <span class="o">=</span> <span class="n">_index2xy</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">x_0</span><span class="p">,</span> <span class="n">y_0</span><span class="p">,</span> <span class="n">x_1</span><span class="p">,</span> <span class="n">y_1</span> <span class="o">=</span> <span class="n">args</span>
 
         <span class="n">_color</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">)</span>
-        <span class="n">_color</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">__check_color_format</span><span class="p">(</span><span class="n">_color</span><span class="p">)</span> <span class="k">if</span> <span class="n">_color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_col</span>
-        <span class="p">)</span>
+        <span class="n">_color</span> <span class="o">=</span> <span class="n">_check_color_format</span><span class="p">(</span><span class="n">_color</span><span class="p">)</span> <span class="k">if</span> <span class="n">_color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_col</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">total_toggler</span> <span class="o">=</span> <span class="n">_color</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="n">_color</span> <span class="o">&gt;</span> <span class="mi">0</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_buf</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x_0</span><span class="p">,</span> <span class="n">y_0</span><span class="p">,</span> <span class="n">x_1</span><span class="p">,</span> <span class="n">y_1</span><span class="p">,</span> <span class="n">_color</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_buf</span><span class="o">.</span><span class="n">display</span><span class="p">()</span></div>
@@ -456,7 +453,7 @@
         <span class="s2">&quot;Off the whole matrix&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_buf</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mh">0x000000</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_buf</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">total_toggler</span> <span class="o">=</span> <span class="mi">0</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="mi">0</span></div>
 
 
 <div class="viewcode-block" id="MATRIX.on">
@@ -464,41 +461,39 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="s2">&quot;On the whole matrix&quot;</span>
         <span class="k">if</span> <span class="n">color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_global_col</span> <span class="o">=</span> <span class="n">__check_color_format</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_global_col</span> <span class="o">=</span> <span class="n">_check_color_format</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_buf</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_global_col</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_buf</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">total_toggler</span> <span class="o">=</span> <span class="mi">1</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="mi">1</span></div>
 
 
 <div class="viewcode-block" id="MATRIX.toggle">
 <a class="viewcode-back" href="../../pybox.html#pybox.matrix.MATRIX.toggle">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">toggle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="s2">&quot;Toggle between on and off&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_toggler</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">total_toggler</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">total_toggler</span> <span class="o">=</span> <span class="mi">1</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="mi">1</span></div>
 
 
 <div class="viewcode-block" id="MATRIX.pixel">
 <a class="viewcode-back" href="../../pybox.html#pybox.matrix.MATRIX.pixel">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">pixel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="s2">&quot;Set a single pixel&quot;</span>
-        <span class="n">__chek_n_of_args</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+        <span class="n">_chek_n_of_args</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">index</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">__index2xy</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">)</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">_index2xy</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">args</span>
 
         <span class="n">_color</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">)</span>
-        <span class="n">_color</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">__check_color_format</span><span class="p">(</span><span class="n">_color</span><span class="p">)</span> <span class="k">if</span> <span class="n">_color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_col</span>
-        <span class="p">)</span>
+        <span class="n">_color</span> <span class="o">=</span> <span class="n">_check_color_format</span><span class="p">(</span><span class="n">_color</span><span class="p">)</span> <span class="k">if</span> <span class="n">_color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_col</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_buf</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">_color</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_buf</span><span class="o">.</span><span class="n">display</span><span class="p">()</span></div>
@@ -518,11 +513,11 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            color: color of the matrix in triple (r,g,b) format</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">__colorint2colortuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_global_col</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_colorint2colortuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_global_col</span><span class="p">)</span>
 
     <span class="nd">@color</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">RED</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_global_col</span> <span class="o">=</span> <span class="n">__check_color_format</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_global_col</span> <span class="o">=</span> <span class="n">_check_color_format</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">brightness</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
@@ -537,10 +532,15 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">brightness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pixels</span><span class="o">.</span><span class="n">brightness</span> <span class="o">=</span> <span class="n">value</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">pass</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">_index2xy</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame_buf</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">_check_color_format</span><span class="p">(</span><span class="n">color</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame_buf</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PIXEL</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="n">WIDTH</span> <span class="o">*</span> <span class="n">HEIGHT</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Pixel index out of range.&quot;</span><span class="p">)</span>
+
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_singletons</span><span class="p">[</span><span class="n">index</span><span class="p">]</span></div>
 
 </pre></div>
@@ -578,6 +578,6 @@
 </div><script src="../../_static/documentation_options.js?v=ba26cd90"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
     </body>
 </html>
