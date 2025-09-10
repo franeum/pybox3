@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import sys
-import mpy_cross as mpy
 from pathlib import Path
 import shutil
 import time
