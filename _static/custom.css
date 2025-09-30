@@ -29,3 +29,19 @@ h6 {
     font-size: 32px;
     /* Ingrossa i titoli */
 }
+
+.bordered-img {
+    border: 2px solid #444;
+    border-radius: 6px;  /* opzionale, angoli arrotondati */
+    padding: 4px;        /* un po’ di spazio dentro */
+}
+
+.image-row {
+    display: flex;
+    justify-content: center;  /* centra le immagini */
+    gap: 60px;                /* spazio tra di loro */
+}
+
+.inline-img {
+    max-width: 200px;         /* dimensiona se serve */
+}
