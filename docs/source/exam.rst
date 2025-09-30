@@ -94,10 +94,15 @@ Realizzare il seguente comportamento:
 -----------------
 
 Traccia facoltativa: Realizzare il comportamento in figura. 
+
 1. Il *cerchio* è gestito da un encoder.
-2. Se ruotato in senso orario il cerchio si completa, altrimenti .
+2. Se ruotato in senso orario si completa, altrimenti scompare.
 3. Il colore del cerchio è rosso.
 
-.. image:: _static/exam/005_bonus.gif
-  :class: bordered-img
-  :align: center
+.. container:: image-row
+
+  .. image:: _static/exam/animazione.gif
+    :class: inline-img
+
+  .. image:: _static/exam/005_bonus.gif
+    :class: bordered-img inline-img
