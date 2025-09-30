@@ -5,8 +5,8 @@ Esame di Sistemi e linguaggi di programmazione per l'audio e le applicazioni mus
 2. La documentazione del *package* **pybox** si trova a questo indirizzo: https://franeum.github.io/pybox3/modules.html;
 3. Il termine ultimo per la presentazione degli script è il 14 Ottobre 2025 alle ore 23:59;
 4. Gli script, raccolti in un unico file *zip*, devono essere spediti via e-mail all'indirizzo del docente;
-5. L'esercizio 5 è facoltativo. Serve eventualmente per la lode, oppure come sostituto in caso di difficoltà su un altro esercizio
-5. Avvertenze:
+5. L'esercizio 5 è facoltativo. Serve eventualmente per la lode, oppure come sostituto in caso di difficoltà su un altro esercizio;
+6. Avvertenze:
 
   1.  Si usino (molti) commenti all'interno degli script!
   2.  Attenzione all'indentazione del codice
