@@ -6,10 +6,19 @@ Esame di Sistemi e linguaggi di programmazione per l'audio e le applicazioni mus
 3. Il termine ultimo per la presentazione degli script è il 14 Ottobre 2025 alle ore 23:59;
 4. Gli script, raccolti in un unico file *zip*, devono essere spediti via e-mail all'indirizzo del docente;
 5. L'esercizio 5 è facoltativo. Serve eventualmente per la lode, oppure come sostituto in caso di difficoltà su un altro esercizio;
-6. Avvertenze:
+6. La valutazione terrà conto, per ogni script, dei seguenti parametri:
 
-  1.  Si usino (molti) commenti all'interno degli script!
-  2.  Attenzione all'indentazione del codice
++--------------------------------------+-------------------+
+| parametro                            | massimo punteggio |
++======================================+===================+
+| logica                               | 3                 |
++--------------------------------------+-------------------+
+| commenti (efficacia ed espressività) | 2                 |
++--------------------------------------+-------------------+
+| spaziatura e stile                   | 1                 |
++--------------------------------------+-------------------+
+| espressività delle etichette         | 1.5               |
++--------------------------------------+-------------------+
 
 
 ====
