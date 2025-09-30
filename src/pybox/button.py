@@ -79,8 +79,11 @@ class BUTTON:
 
     """
 
-    def __init__(self, pin=board.GP6):
-        self.__keys = keypad.Keys((pin,), value_when_pressed=False)
+    def __init__(self, button=None):
+        if button not in [1, 2, 3]:
+            raise ValueError("Missing a required argument: 1-3 for button number")
+
+        self.__keys = keypad.Keys((BUTTONS[button],), value_when_pressed=False)
         self.__press_function = None
         self.__release_function = None
         self.__press_time = None
