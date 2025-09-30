@@ -77,8 +77,7 @@ Realizzare il seguente comportamento:
 
 Realizzare il seguente comportamento: 
 
-1. la pressione di un pulsante accende il led (oggetto della classe LED). 
-2. Una nuova pressione lo spegne. 
+1. La pressione del pulsante alterna l'accensione e lo spegnimento di un led (oggetto della classe LED)
 3. Il colore del led è blu.
 
 .. container:: image-row
