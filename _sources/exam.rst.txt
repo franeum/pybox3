@@ -3,7 +3,7 @@ Esame di Sistemi e linguaggi di programmazione per l'audio e le applicazioni mus
 
 1. Le prove prevedono la stesura di script in python che saranno verificati su pybox. Per ogni esercizio si realizzi uno script dedicato, quindi lo studente consegnerà tanti script quanti sono gli esercizi da lui realizzati;
 2. La documentazione del *package* **pybox** si trova a questo indirizzo: https://franeum.github.io/pybox3/modules.html;
-3. Il termine ultimo per la presentazione degli script è il 14 Ottobre 2025 alle ore 23:59;
+3. Il termine ultimo per la presentazione degli script è il 20 Ottobre 2025 alle ore 23:59;
 4. Gli script, raccolti in un unico file *zip*, devono essere spediti via e-mail all'indirizzo del docente;
 5. L'esercizio 5 è facoltativo. Serve eventualmente per la lode, oppure come sostituto in caso di difficoltà su un altro esercizio;
 6. La valutazione terrà conto, per ogni script, dei seguenti parametri:
