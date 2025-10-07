@@ -8,3 +8,6 @@
 - adafruit_pixel_framebuf.mpy
 - adafruit_midi
 - adafruit_waveform
+
+### 
+1. call callback with an implicit argument
